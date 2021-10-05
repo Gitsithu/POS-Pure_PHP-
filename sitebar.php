@@ -1,0 +1,36 @@
+<div class="well">
+<h4>
+Blog Search
+</h4>
+<form action="search.php" method="post">
+<div class="input-group">
+<input name="search" type="text" class="form-control" />
+<span class="input-group-btn">
+<button name="submit" class="btn btn-primary btn-md" type="submit">
+<span class="glyphicon glyphicon-search"></span>
+</button>
+</span>
+</div>
+</form>
+</div>
+<div class="well">
+<h4>
+	Categories
+</h4>
+<div class="row">
+<div class="col-sm-12">
+<ul class="list-unstyled">
+<?php
+	$category="select * from category";
+	$go_query=mysqli_query($connection,$category);
+	while($out=mysqli_fetch_array($go_query))
+	{
+		$db_cat_id=$out['cat_id'];
+		$db_cat_name=$out['cat_name'];
+		echo"<li><a href='index.php?cat_id={$db_cat_id}'>{$db_cat_name}</a></li>";	
+	}
+?>
+</ul>
+</div>
+</div>
+</div>
